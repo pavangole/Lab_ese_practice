@@ -29,7 +29,7 @@ class LinkedList
 		}
 
 		void display() {
-			Node *temp = head;
+			Node *temp = this->head;
 			while(temp->next != nullptr) {
 				cout << temp->data << endl;
 				temp = temp->next;
@@ -37,7 +37,7 @@ class LinkedList
 		}
 
 		Node* search(int data) {
-			Node *temp = head;
+			Node *temp = this->head;
 			while(temp -> next != nullptr) {
 				if(temp-> data == data) {
 					return temp;
@@ -45,6 +45,29 @@ class LinkedList
 				temp = temp->next;
 			}
 			return nullptr;
+		}
+
+		void deleteNode(int data) {
+			Node *temp = this->head;
+			Node *todelete = search(data);
+			if(todelete == nullptr) {
+				cout << "Data Not Found" << endl;
+				return;
+			}
+			if(todelete == this->head) {
+				this->head = this->head->next;
+				return;
+			}
+			while(temp-> next != todelete) {
+					temp = temp->next;
+			}
+			if(todelete == this->tail) {
+				
+				temp->next = nullptr;
+				tail = temp;
+				return;
+			}
+			temp->next = todelete->next;
 		}
 	
 };
@@ -57,7 +80,19 @@ int main() {
 	list->insert(4);
 	list->insert(5);
 	list->insert(6);
-	cout << list-> search(3)->data << endl;
 	list->display();
+	cout << endl;
+	cout << endl;
+	list->deleteNode(3);
+	list->display();
+	cout << endl;
+	cout << endl;
+	list->deleteNode(1);
+	list->display();
+	cout << endl;
+	cout << endl;
+	list->deleteNode(5);
+	list->display();
+		
 	cout << "Don't Worry I am here'" << endl;
 }
