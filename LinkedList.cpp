@@ -93,6 +93,7 @@ int main() {
 	cout << endl;
 	list->deleteNode(5);
 	list->display();
+	list->deleteNode(5);
 		
 	cout << "Don't Worry I am here'" << endl;
 }
