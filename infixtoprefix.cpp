@@ -18,7 +18,6 @@ int prec(char c)
 
 string infixtoPrefix(string s)
 {
-    cout << "I am running" << endl;
     stack<char> st;
     string result ="";
     for (int i = 0; i < s.length() - 2; i++)
@@ -39,7 +38,6 @@ string infixtoPrefix(string s)
                 result+=st.top();
                 cout << result << endl;
                 st.pop();
-                cout << "hello" << endl;
                 
             }
             st.pop();
