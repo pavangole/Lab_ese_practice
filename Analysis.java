@@ -21,10 +21,18 @@ public class Analysis {
         for (int i = 0, j = 9; i < 10 && j >= 0; i++, j--) {
             temp[i] = input[j];
         }
-        selection(temp);
+        selection(temp.clone());
         System.out.println("Average Case");
         int average[] = { 3, 39, 7, 35, 11, 31, 15, 27, 19, 23 };
-        selection(average);
+        selection(average.clone());
+
+        System.out.println("For Insertion Sort");
+        System.out.println("Best Case");
+        insertion(input.clone());
+        System.out.println("Worst Case");
+        insertion(temp);
+        System.out.println("Average Case");
+        insertion(average);
 
     }
 
@@ -61,22 +69,21 @@ public class Analysis {
         int swaps = 0;
         System.out.print("Input :- ");
         System.out.println(Arrays.toString(input));
-        for (int i = 1; i < input.length; i++) {
-            int key = input[i];
-            int j = i - 1;
+        // insertion sort
+        for (int i = 0; i <= input.length - 2; i++) {
+            int j = i + 1;
             comparisons++;
-            while (j >= 0 && input[j] > key) {
+            while (j > 0 && input[j] < input[j - 1]) {
                 comparisons++;
-                input[j + 1] = input[j];
+                int temp = input[j];
+                input[j] = input[j - 1];
+                input[j - 1] = temp;
                 swaps++;
                 j--;
             }
-            input[j + 1] = key;
         }
-        System.out.println();
         System.out.print("Output :- ");
         System.out.println(Arrays.toString(input));
-        System.out.println();
         System.out.println("Number of Comparisons :- " + comparisons);
         System.out.println("Number of Swaps :- " + swaps);
         System.out.println();
